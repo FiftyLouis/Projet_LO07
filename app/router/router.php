@@ -1,7 +1,7 @@
 
 <!-- ----- debut Router -->
 <?php
-require_once '../controller/config.php';
+session_start();
 require_once '../controller/ControllerBase.php';
 
 
@@ -21,6 +21,9 @@ $args= $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
+    case "Connexion" : ControllerBase::$action($args);
+        break;
+
     default : ControllerBase::Accueil($args);
         break;
 }
