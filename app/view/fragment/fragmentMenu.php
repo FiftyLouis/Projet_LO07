@@ -38,9 +38,9 @@
                                 <li><a class="dropdown-item" href="router.php?action=MesRdv">Mes rendez-vous</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=patientSansDoublon">Liste des patients (sans doublon)</a></li>
                             <?php elseif ($_SESSION['status'] == 'Patient') : ?>
-                                <li><a class="dropdown-item" href="router.php?action=mesRdv">Liste de mes rendez-vous</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=selectionPraticien">Prendre un rendez-vous avec un praticien</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=praticiensProche">Trouver un praticien près de chez soi</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=Compte">Mon compte</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=MesRdvPatient">Mes rendez vous</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=patientChoisirPraticien">Prendre rendez vous</a></li>
                             <?php endif; ?>
                         </ul>
                     </li>

@@ -191,7 +191,7 @@ class ModelPersonne{
     public static function getPatientSansDoublon($id){
         try{
             $database = Model::getInstance();
-            $query = "SELECT p.nom , p.prenom , p.adresse from personne as p, rendezvous as r where r.patient_id = p.id and p.id != 0 and r.praticien_id = :id";
+            $query = "SELECT distinct p.nom , p.prenom , p.adresse from personne as p, rendezvous as r where r.patient_id = p.id and p.id != 0 and r.praticien_id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id,
@@ -204,6 +204,55 @@ class ModelPersonne{
         }
     }
 
+    public static function getCompte($id){
+        try{
+            $database = Model::getInstance();
+            $query = "SELECT * from personne where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getNomPraticien(){
+        try {
+            $database = Model::getInstance();
+
+            $query = "select id, nom, prenom from personne where statut = :statut";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'statut' => self::PRATICIEN
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getDispoPraticienPatient($id) {
+        try {
+            $database = Model::getInstance();
+
+            $query = "SELECT id, rdv_date FROM rendezvous WHERE patient_id=0 AND praticien_id = :id;";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 }
 ?>
 <!--- fin model --->

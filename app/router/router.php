@@ -5,6 +5,7 @@ session_start();
 require_once '../controller/ControllerBase.php';
 require_once '../controller/ControlleurAdmin.php';
 require_once '../controller/ControlleurPraticien.php';
+require_once '../controller/ControlleurPatient.php';
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -44,6 +45,13 @@ switch ($action) {
     case "MesRdv":
     case "patientSansDoublon":
     case "RdvDispo" :ControlleurPraticien::$action($args);
+        break;
+
+    case "MesRdvPatient":
+    case "patientChoisirPraticien":
+    case "patientDispo":
+    case "patientInsertedRdv":
+    case "Compte":ControlleurPatient::$action($args);
         break;
 
     default : ControllerBase::Accueil($args);

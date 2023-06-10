@@ -128,6 +128,7 @@ class ModelRendezVous{
     public static function getRdv($id){
         try{
             $database = Model::getInstance();
+
             $query = "SELECT p.nom , p.prenom , r.rdv_date from personne as p, rendezvous as r where p.id = r.patient_id and r.praticien_id = :id and p.id != 0";
             $statement = $database->prepare($query);
             $statement->execute([
@@ -140,8 +141,39 @@ class ModelRendezVous{
             return NULL;
         }
     }
+    public static function getRdvPatient($id){
+        try{
+            $database = Model::getInstance();
 
+            $query = "SELECT p.nom , p.prenom, r.rdv_date from personne as p, rendezvous as r where r.praticien_id = p.id and r.patient_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+    }
 
+    public static function addRdv($idRdv, $idPatient){
+        try{
+            $database = Model::getInstance();
+
+            $query = "UPDATE rendezvous set patient_id = :idPatient where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $idRdv,
+                'idPatient' => $idPatient
+            ]);
+            $statement->fetchAll();
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+    }
 
 
 }
