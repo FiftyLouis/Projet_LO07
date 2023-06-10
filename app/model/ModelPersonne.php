@@ -100,8 +100,32 @@ class ModelPersonne{
 
     }
 
-    public static function getUser($username){
+    public static function InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id){
+        try{
+            $database = Model::getInstance();
+            $query = 'select max(id) from personne';
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $id = $statement->fetch();
+            $id = $id[0]+1;
 
+            $query = 'insert into personne value (:id,:nom, :prenom, :adresse, :login, :password, :statut,:specialite_id)';
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'adresse'=>$adresse,
+                'login' => $login,
+                'password' => $password,
+                'statut' => $statut,
+                'specialite_id' => $specialite_id
+            ]);
+            return $id;
+        } catch(PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return -1;
+        }
     }
 }
 ?>

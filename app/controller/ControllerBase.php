@@ -63,6 +63,42 @@ class ControllerBase
         require($vue);
     }
 
+    public static function Inscription(){
+        include 'config.php';
+        $vue = $root . '/app/view/viewBase/viewInscription.php';
+        if (DEBUG)
+            echo("ControllerBase : Inscription : vue = $vue");
+        require($vue);
+    }
+
+    public static function DoInscription(){
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $adresse = $_POST['adresse'];
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+        $statut = intval($_POST['statut']);
+        $specialite_id = intval($_POST['specialite_id']);
+
+        $user = ModelPersonne::connexion($login,$password);
+        if($user){
+            //login déjà utilisé
+            header('Location: router.php?action=Inscription');
+        }else if(($statut == 0 || $statut == 2) && $specialite_id != 0){
+            //erreur specialite id
+            header('Location: router.php?action=Inscription');
+        } else{
+            $id = ModelPersonne::InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id);
+            if($id){
+                //inscription réussi
+                header('Location: router.php?action=Connexion');
+            }else{
+                //echec inscription
+                header('Location: router.php?action=Inscription');
+            }
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ControllerDoctolib -->

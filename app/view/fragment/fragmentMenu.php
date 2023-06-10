@@ -16,7 +16,34 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                <?php if (!empty($_SESSION) && isset($_SESSION['status'])) : ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $_SESSION['status']; ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <?php if ($_SESSION['status'] == 'Administrateur') : ?>
+                                <li><a class="dropdown-item" href="router.php?action=specialiteReadAll">Liste des spécialités</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=specialiteReadId&target=specialiteReadOne">Sélection d'une spécialité par son id</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="router.php?action=praticienReadAll">Liste des praticiens avec leur spécialité</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=nbrPraticien">Nombre de praticiens par patient</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="router.php?action=infoAll">Info</a></li>
+                            <?php elseif ($_SESSION['status'] == 'Praticien') : ?>
+                                <li><a class="dropdown-item" href="router.php?action=viewDisponibilite">Mes disponibilités</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=disponibiliteAdd">Ajout de nouvelles disponibilités</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="router.php?action=rdvReadAll">Mes rendez-vous</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=listePatientsSansDoublon">Liste des patients (sans doublon)</a></li>
+                            <?php elseif ($_SESSION['status'] == 'Patient') : ?>
+                                <li><a class="dropdown-item" href="router.php?action=mesRdv">Liste de mes rendez-vous</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=selectionPraticien">Prendre un rendez-vous avec un praticien</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=praticiensProche">Trouver un praticien près de chez soi</a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
                     <ul class="dropdown-menu">

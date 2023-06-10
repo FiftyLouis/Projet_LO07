@@ -15,7 +15,7 @@
         <br/>
         <button class="btn btn-primary" type="submit">Se connecter</button>
     </form>
-    <p>Pas de compte ?<a href="router.php?action=Inscription">Inscrivez-vous</a></p>
+    <p>Pas de compte ? <a href="router.php?action=Inscription">Inscrivez-vous</a></p>
 </div>
 
 <?php require ($root . '/app/view/fragment/fragmentFooter.html'); ?>
