@@ -3,6 +3,7 @@
 <?php
 session_start();
 require_once '../controller/ControllerBase.php';
+require_once '../controller/ControlleurAdmin.php';
 
 
 // --- récupération de l'action passée dans l'URL
@@ -26,6 +27,9 @@ switch ($action) {
     case "Deconnexion" :
     case "DoConnexion":
     case "Connexion" : ControllerBase::$action($args);
+        break;
+
+    case "ListeSpecialite" :ControlleurAdmin::$action($args);
         break;
 
     default : ControllerBase::Accueil($args);

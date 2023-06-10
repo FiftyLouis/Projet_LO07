@@ -1,4 +1,4 @@
-<!-- ----- debut ControllerDoctolib -->
+<!-- ----- debut Controller -->
 <?php
 require_once '../model/ModelPersonne.php';
 class ControllerBase
@@ -101,4 +101,4 @@ class ControllerBase
 
 }
 ?>
-<!-- ----- fin ControllerDoctolib -->
+<!-- ----- fin Controller -->

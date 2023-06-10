@@ -11,5 +11,34 @@ class ModelSpecialite{
             $this->$label = $label;
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    public static function getAll(){
+        try {
+            $database = Model::getInstance();
+            $query = "select * from specialite";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_CLASS, "ModelSpecialite");
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 }
 ?>
