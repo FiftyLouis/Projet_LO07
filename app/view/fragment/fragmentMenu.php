@@ -28,9 +28,9 @@
                                 <li><a class="dropdown-item" href="router.php?action=specialiteInsert">Insertion d'une nouvelle spécialité</a></li>
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="router.php?action=praticienReadAll">Liste des praticiens et de leur spécialité</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=nbrPraticien">Nombre de praticiens par patient</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=nbrPatricienPatient">Nombre de praticiens par patient</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="router.php?action=infoAll">Info</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=info">Info</a></li>
                             <?php elseif ($_SESSION['status'] == 'Praticien') : ?>
                                 <li><a class="dropdown-item" href="router.php?action=viewDisponibilite">Mes disponibilités</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=disponibiliteAdd">Ajout de nouvelles disponibilités</a></li>

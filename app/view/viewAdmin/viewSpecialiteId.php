@@ -2,11 +2,12 @@
 <?php require ($root . '/app/view/fragment/fragmentHeader.html')?>
 
 <body>
-<div class="container">
+<div class="container bg-light rounded">
     <?php
     include $root . '/app/view/fragment/fragmentMenu.php';
+    include $root . '/app/view/fragment/fragmentJumbo.html';
     ?>
-
+    <h4>Choisir une spécialité</h4><br/>
     <form role="form" method='get' action='router.php'>
         <div class="form-group">
             <input type="hidden" name='action' value='SpecialiteReadOne'>

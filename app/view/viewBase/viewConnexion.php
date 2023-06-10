@@ -1,7 +1,7 @@
 <?php require($root . '/app/view/fragment/fragmentHeader.html') ?>
 
 <body>
-<div class="container">
+<div class="container bg-light rounded">
     <?php require ($root . '/app/view/fragment/fragmentMenu.php');?>
     <h2>Connexion</h2>
     <form role="form" method='POST' action='router.php?action=DoConnexion'>

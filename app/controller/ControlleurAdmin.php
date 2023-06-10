@@ -60,4 +60,29 @@ class ControlleurAdmin{
         }
         require ($vue);
     }
+
+    public static function nbrPatricienPatient(){
+        $results = ModelPersonne::nbrPatricicenPatient();
+        include 'config.php';
+        $vue = $root . 'app/view/viewAdmin/viewPatricienPatient.php';
+        if (DEBUG) {
+            echo ("ControllerAdmin : viewPatricienPatient : vue = $vue");
+        }
+        require ($vue);
+    }
+
+    public static function info(){
+        $specialite = ModelSpecialite::getAll();
+        $praticiens = ModelPersonne::getAllPraticien();
+        $patients = ModelPersonne::getAllPatient();
+        $admin = ModelPersonne::getAllAdmin();
+        $rdv = ModelRendezVous::getAllRdv();
+        include 'config.php';
+        $vue = $root . 'app/view/viewAdmin/viewInfo.php';
+        if (DEBUG) {
+            echo ("ControllerAdmin : viewInfo : vue = $vue");
+        }
+        require ($vue);
+
+    }
 }

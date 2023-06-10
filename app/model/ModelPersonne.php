@@ -142,6 +142,51 @@ class ModelPersonne{
             return -1;
         }
     }
+
+    public static function nbrPatricicenPatient(){
+        try{
+            $database = Model::getInstance();
+
+            $query = "select p.id, p.nom, p.prenom, p.adresse, COUNT(r.praticien_id) from personne as p, rendezvous as r where p.id = r.patient_id GROUP BY r.patient_id";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return -1;
+        }
+    }
+
+    public static function getAllPatient(){
+        try{
+            $database = Model::getInstance();
+
+            $query = "SELECT nom, prenom, adresse FROM `personne` WHERE personne.statut = 2";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return -1;
+        }
+    }
+
+    public static function getAllAdmin(){
+        try{
+            $database = Model::getInstance();
+
+            $query = "SELECT nom, prenom, adresse FROM `personne` WHERE personne.statut = 0";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return -1;
+        }
+    }
 }
 ?>
 <!--- fin model --->

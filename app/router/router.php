@@ -34,6 +34,8 @@ switch ($action) {
     case "specialiteInsert" :
     case "specialiteInserted":
     case "praticienReadAll":
+    case "nbrPatricienPatient" :
+    case "info" :
     case "ListeSpecialite" :ControlleurAdmin::$action($args);
         break;
 
