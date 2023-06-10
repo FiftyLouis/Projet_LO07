@@ -29,6 +29,8 @@ switch ($action) {
     case "Connexion" : ControllerBase::$action($args);
         break;
 
+    case "specialiteReadId" :
+    case "SpecialiteReadOne" :
     case "ListeSpecialite" :ControlleurAdmin::$action($args);
         break;
 

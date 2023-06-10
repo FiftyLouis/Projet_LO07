@@ -24,7 +24,7 @@
                         <ul class="dropdown-menu">
                             <?php if ($_SESSION['status'] == 'Administrateur') : ?>
                                 <li><a class="dropdown-item" href="router.php?action=ListeSpecialite">Liste des spécialités</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=specialiteReadId&target=specialiteReadOne">Sélection d'une spécialité par son id</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=specialiteReadId">Sélection d'une spécialité par son id</a></li>
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="router.php?action=praticienReadAll">Liste des praticiens avec leur spécialité</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=nbrPraticien">Nombre de praticiens par patient</a></li>
