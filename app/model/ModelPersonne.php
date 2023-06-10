@@ -10,7 +10,7 @@ class ModelPersonne{
 
     public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL, $login = NULL, $password = NULL, $statut = NULL, $specialite_id = NULL)
     {
-        if($this->$id = NULL){
+        if(!is_null($id)){
             $this->id = $id;
             $this->nom = $nom;
             $this->prenom = $prenom;
