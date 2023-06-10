@@ -21,6 +21,8 @@ $args= $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
+    case "Deconnexion" :
+    case "DoConnexion":
     case "Connexion" : ControllerBase::$action($args);
         break;
 

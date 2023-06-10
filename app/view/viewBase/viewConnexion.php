@@ -6,8 +6,8 @@
     <h2>Connexion</h2>
     <form role="form" method='POST' action='router.php?action=DoConnexion'>
         <div class="form-group">
-            <label class='w-25' for="username">Nom d'utilisateur : </label><br>
-            <input type="text" name='username' size='10'> <br/>
+            <label class='w-25' for="login">Nom d'utilisateur : </label><br>
+            <input type="text" name='login' size='10'> <br/>
             <label class='w-25' for="password">password : </label><br>
             <input type="password" name='password' size='10'> <br/>
         </div>

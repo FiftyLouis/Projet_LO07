@@ -10,8 +10,8 @@ if (!defined('DEBUG')) {
 // ===============
 // Configuration de la base de données sur dev-isi
 $dsn = 'mysql:dbname=doctolib;host=localhost;charset=utf8';
-$username = 'bonnetlo';
-$password = 'pc4vbbBg';
+$username = 'root';
+$password = '';
 
 if (!defined('LOCAL')) {
     define('LOCAL', TRUE);

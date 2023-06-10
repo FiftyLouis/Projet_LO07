@@ -21,6 +21,88 @@ class ModelPersonne{
             $this->specialite_id = $specialite_id;
         }
     }
+
+    /**
+     * @return mixed|null
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getSpecialiteId()
+    {
+        return $this->specialite_id;
+    }
+
+    public static function connexion($login,$password){
+        try{
+            $database = Model::getInstance();
+            $query = "select * from personne where login = :login and password = :password;";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'login' => $login,
+                'password' => $password
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelPersonne");
+            if($results){
+                return $results[0];
+            }else{
+                return NULL;
+            }
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+
+    }
+
+    public static function getUser($username){
+
+    }
 }
 ?>
 <!--- fin model --->
