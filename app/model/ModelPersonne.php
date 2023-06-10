@@ -147,7 +147,7 @@ class ModelPersonne{
         try{
             $database = Model::getInstance();
 
-            $query = "select p.id, p.nom, p.prenom, p.adresse, COUNT(r.praticien_id) from personne as p, rendezvous as r where p.id = r.patient_id GROUP BY r.patient_id";
+            $query = "select p.id, p.nom, p.prenom, p.adresse, COUNT(r.praticien_id) from personne as p, rendezvous as r where p.id = r.patient_id and p.id !=0 GROUP BY r.patient_id";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -162,7 +162,7 @@ class ModelPersonne{
         try{
             $database = Model::getInstance();
 
-            $query = "SELECT nom, prenom, adresse FROM `personne` WHERE personne.statut = 2";
+            $query = "SELECT nom, prenom, adresse FROM `personne` WHERE personne.statut = 2 and id!=0";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -187,6 +187,7 @@ class ModelPersonne{
             return -1;
         }
     }
+
 }
 ?>
 <!--- fin model --->

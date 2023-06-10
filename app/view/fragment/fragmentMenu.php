@@ -32,8 +32,8 @@
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="router.php?action=info">Info</a></li>
                             <?php elseif ($_SESSION['status'] == 'Praticien') : ?>
-                                <li><a class="dropdown-item" href="router.php?action=viewDisponibilite">Mes disponibilités</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=disponibiliteAdd">Ajout de nouvelles disponibilités</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=RdvDispo">Mes disponibilités</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=DispoInsert">Ajout de nouvelles disponibilités</a></li>
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="router.php?action=rdvReadAll">Mes rendez-vous</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=listePatientsSansDoublon">Liste des patients (sans doublon)</a></li>
