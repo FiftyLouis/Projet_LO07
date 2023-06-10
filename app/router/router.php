@@ -31,6 +31,8 @@ switch ($action) {
 
     case "specialiteReadId" :
     case "SpecialiteReadOne" :
+    case "specialiteInsert" :
+    case "specialiteInserted":
     case "ListeSpecialite" :ControlleurAdmin::$action($args);
         break;
 

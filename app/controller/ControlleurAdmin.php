@@ -31,4 +31,23 @@ class ControlleurAdmin{
         $vue = $root . '/app/view/viewAdmin/viewListeSpecialite.php';
         require ($vue);
     }
+
+    public static function specialiteInsert(){
+        include 'config.php';
+        $vue = $root . '/app/view/viewAdmin/specialiteInsert.php';
+        require ($vue);
+    }
+
+    public static function specialiteInserted(){
+        include 'config.php';
+        $label = $_GET['label'];
+        $id = ModelSpecialite::insert($label);
+        $results = ModelSpecialite::getOne($id);
+        if($results){
+            $vue = $root . '/app/view/viewAdmin/specialiteInserted.php';
+            require ($vue);
+        }else{
+            header('Location: router.php?action=specialiteInsert');
+        }
+    }
 }

@@ -1,5 +1,5 @@
 
-<!-- ----- début fragmentCaveMenu -->
+<!-- ----- début fragmentMenu -->
 
 <nav class="navbar navbar-expand-lg bg-success fixed-top">
     <div class="container-fluid">
@@ -25,6 +25,7 @@
                             <?php if ($_SESSION['status'] == 'Administrateur') : ?>
                                 <li><a class="dropdown-item" href="router.php?action=ListeSpecialite">Liste des spécialités</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=specialiteReadId">Sélection d'une spécialité par son id</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=specialiteInsert">Insertion d'une nouvelle spécialité</a></li>
                                 <hr class="dropdown-divider">
                                 <li><a class="dropdown-item" href="router.php?action=praticienReadAll">Liste des praticiens avec leur spécialité</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=nbrPraticien">Nombre de praticiens par patient</a></li>
@@ -68,5 +69,5 @@
     </div>
 </nav>
 
-<!-- ----- fin fragmentCaveMenu -->
+<!-- ----- fin fragmentMenu -->
 
