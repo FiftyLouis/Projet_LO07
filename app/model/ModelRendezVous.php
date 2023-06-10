@@ -125,6 +125,23 @@ class ModelRendezVous{
         }
     }
 
+    public static function getRdv($id){
+        try{
+            $database = Model::getInstance();
+            $query = "SELECT p.nom , p.prenom , r.rdv_date from personne as p, rendezvous as r where p.id = r.patient_id and r.praticien_id = :id and p.id != 0";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+            ]);
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+    }
+
+
 
 
 }

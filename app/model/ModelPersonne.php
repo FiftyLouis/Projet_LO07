@@ -188,6 +188,22 @@ class ModelPersonne{
         }
     }
 
+    public static function getPatientSansDoublon($id){
+        try{
+            $database = Model::getInstance();
+            $query = "SELECT p.nom , p.prenom , p.adresse from personne as p, rendezvous as r where r.patient_id = p.id and p.id != 0 and r.praticien_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id,
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelPersonne");
+            return $results;
+        } catch (PDOException $exception){
+            printf("%s - %s<p/>\n", $exception->getCode(), $exception->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!--- fin model --->

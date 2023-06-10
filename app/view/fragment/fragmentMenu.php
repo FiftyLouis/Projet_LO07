@@ -35,8 +35,8 @@
                                 <li><a class="dropdown-item" href="router.php?action=RdvDispo">Mes disponibilités</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=DispoInsert">Ajout de nouvelles disponibilités</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="router.php?action=rdvReadAll">Mes rendez-vous</a></li>
-                                <li><a class="dropdown-item" href="router.php?action=listePatientsSansDoublon">Liste des patients (sans doublon)</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=MesRdv">Mes rendez-vous</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=patientSansDoublon">Liste des patients (sans doublon)</a></li>
                             <?php elseif ($_SESSION['status'] == 'Patient') : ?>
                                 <li><a class="dropdown-item" href="router.php?action=mesRdv">Liste de mes rendez-vous</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=selectionPraticien">Prendre un rendez-vous avec un praticien</a></li>

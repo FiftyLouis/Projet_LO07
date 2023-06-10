@@ -41,6 +41,8 @@ switch ($action) {
 
     case "DispoInsert" :
     case "dispoInserted":
+    case "MesRdv":
+    case "patientSansDoublon":
     case "RdvDispo" :ControlleurPraticien::$action($args);
         break;
 

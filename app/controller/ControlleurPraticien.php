@@ -50,4 +50,21 @@ class ControlleurPraticien{
         }
     }
 
+    public static function MesRdv(){
+        include 'config.php';
+        $id = $_SESSION['id'];
+        $results = ModelRendezVous::getRdv($id);
+        $vue = $root . 'app/view/viewPraticien/viewRdv.php';
+        if (DEBUG) echo ("ControlleurPraticien : viewRdv : vue = $vue<br>");
+        require ($vue);
+    }
+
+    public static function patientSansDoublon(){
+        include 'config.php';
+        $id = $_SESSION['id'];
+        $results = ModelPersonne::getPatientSansDoublon($id);
+        $vue = $root . 'app/view/viewPraticien/viewPatient.php';
+        if (DEBUG) echo ("ControlleurPraticien : viewPatient : vue = $vue<br>");
+        require ($vue);
+    }
 }
