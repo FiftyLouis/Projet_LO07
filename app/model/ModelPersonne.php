@@ -127,6 +127,21 @@ class ModelPersonne{
             return -1;
         }
     }
+
+    public static function getAllPraticien(){
+        try{
+            $database = Model::getInstance();
+
+            $query = "SELECT p.id, p.nom, p.prenom, p.adresse, s.label FROM personne as p, specialite as s WHERE p.specialite_id = s.id AND p.statut=1 ORDER BY p.id";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch(PDOException $e){
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return -1;
+        }
+    }
 }
 ?>
 <!--- fin model --->

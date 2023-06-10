@@ -50,4 +50,14 @@ class ControlleurAdmin{
             header('Location: router.php?action=specialiteInsert');
         }
     }
+
+    public static function praticienReadAll(){
+        $results = ModelPersonne::getAllPraticien();
+        include 'config.php';
+        $vue = $root . 'app/view/viewAdmin/viewAllPraticien.php';
+        if (DEBUG) {
+            echo ("ControllerAdmin : praticienReadALl : vue = $vue");
+        }
+        require ($vue);
+    }
 }
