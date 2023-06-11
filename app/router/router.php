@@ -23,6 +23,9 @@ $args= $param;
 
 // --- Liste des méthodes autorisées
 switch ($action) {
+
+    case "Compte":
+    case "ameliorationMVC" :
     case "DoInscription" :
     case "Inscription" :
     case "Deconnexion" :
@@ -50,8 +53,7 @@ switch ($action) {
     case "MesRdvPatient":
     case "patientChoisirPraticien":
     case "patientDispo":
-    case "patientInsertedRdv":
-    case "Compte":ControlleurPatient::$action($args);
+    case "patientInsertedRdv":ControlleurPatient::$action($args);
         break;
 
     default : ControllerBase::Accueil($args);

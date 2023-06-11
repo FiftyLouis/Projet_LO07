@@ -38,7 +38,6 @@
                                 <li><a class="dropdown-item" href="router.php?action=MesRdv">Mes rendez-vous</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=patientSansDoublon">Liste des patients (sans doublon)</a></li>
                             <?php elseif ($_SESSION['status'] == 'Patient') : ?>
-                                <li><a class="dropdown-item" href="router.php?action=Compte">Mon compte</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=MesRdvPatient">Mes rendez vous</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=patientChoisirPraticien">Prendre rendez vous</a></li>
                             <?php endif; ?>
@@ -56,7 +55,7 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
                     <ul class="dropdown-menu">
                         <?php if ($_SESSION['login'] != "vide") : ?>
-                            <li><a class="dropdown-item" href="router.php?action=monCompte">Mon Compte</a></li>
+                            <li><a class="dropdown-item" href="router.php?action=Compte">Mon compte</a></li>
                             <li><a class="dropdown-item" href="router.php?action=Deconnexion">Déconnexion</a></li>
                         <?php else : ?>
                             <li><a class="dropdown-item" href="router.php?action=Connexion">Connexion</a></li>

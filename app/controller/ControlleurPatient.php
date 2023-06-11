@@ -5,15 +5,6 @@ require_once '../model/ModelRendezVous.php';
 
 class ControlleurPatient{
 
-    public static function Compte(){
-        $id = $_SESSION["id"];
-        $results = ModelPersonne::getCompte($id);
-        include 'config.php';
-        $vue = $root . 'app/view/viewPatient/viewCompte.php';
-        if (DEBUG) echo ("ControlleurPatient : viewCompte : vue = $vue<br>");
-        require ($vue);
-    }
-
     public static function MesRdvPatient(){
         $id = $_SESSION["id"];
         $results = ModelRendezVous::getRdvPatient($id);

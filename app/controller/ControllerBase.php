@@ -99,6 +99,23 @@ class ControllerBase
         }
     }
 
+    public static function ameliorationMVC(){
+        include 'config.php';
+        $vue = $root . '/app/view/viewAmelioration/viewMVC.php';
+        if (DEBUG)
+            echo("ControllerBase : viewMVC : vue = $vue");
+        require($vue);
+    }
+
+
+    public static function Compte(){
+        $id = $_SESSION["id"];
+        $results = ModelPersonne::getCompte($id);
+        include 'config.php';
+        $vue = $root . 'app/view/viewBase/viewCompte.php';
+        if (DEBUG) echo ("ControlleurBase : viewCompte : vue = $vue<br>");
+        require ($vue);
+    }
 }
 ?>
 <!-- ----- fin Controller -->
