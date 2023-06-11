@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-expand-lg bg-success fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="router.php?action=Accueil">Bonnet Louis</a>
+        <a class="navbar-brand" href="router.php?action=Accueil">Bonnet Belz</a>
         <?php
         if ($_SESSION['login'] != "vide") {
             $status = $_SESSION['status'];
@@ -39,6 +39,7 @@
                                 <li><a class="dropdown-item" href="router.php?action=patientSansDoublon">Liste des patients (sans doublon)</a></li>
                             <?php elseif ($_SESSION['status'] == 'Patient') : ?>
                                 <li><a class="dropdown-item" href="router.php?action=MesRdvPatient">Mes rendez vous</a></li>
+                                <li><a class="dropdown-item" href="router.php?action=praticienHonoraire">Praticiens et leurs honoraires</a></li>
                                 <li><a class="dropdown-item" href="router.php?action=patientChoisirPraticien">Prendre rendez vous</a></li>
                             <?php endif; ?>
                         </ul>
@@ -47,7 +48,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="router.php?action=fonctionnaliteOriginale">Proposez une fonctionnalité originale</a></li>
+                        <li><a class="dropdown-item" href="router.php?action=innovation">Proposez une innovation originale</a></li>
                         <li><a class="dropdown-item" href="router.php?action=ameliorationMVC">Proposez une amélioration du code MVC</a></li>
                     </ul>
                 </li>

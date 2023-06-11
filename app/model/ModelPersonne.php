@@ -3,12 +3,12 @@
 require_once 'Model.php';
 
 class ModelPersonne{
-    private $id, $nom, $prenom, $adresse, $login, $password, $statut, $specialite_id;
+    private $id, $nom, $prenom, $adresse, $login, $password, $statut, $specialite_id, $honoraire;
     const ADMINISTRATEUR = 0;
     const PRATICIEN = 1;
     const PATIENT = 2;
 
-    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL, $login = NULL, $password = NULL, $statut = NULL, $specialite_id = NULL)
+    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $adresse = NULL, $login = NULL, $password = NULL, $statut = NULL, $specialite_id = NULL, $honoraire = NULL)
     {
         if(!is_null($id)){
             $this->id = $id;
@@ -19,6 +19,7 @@ class ModelPersonne{
             $this->password = $password;
             $this->statut = $statut;
             $this->specialite_id = $specialite_id;
+            $this->honoraire = $honoraire;
         }
     }
 
@@ -100,7 +101,7 @@ class ModelPersonne{
 
     }
 
-    public static function InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id){
+    public static function InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id, $honoraire){
         try{
             $database = Model::getInstance();
             $query = 'select max(id) from personne';
@@ -109,7 +110,7 @@ class ModelPersonne{
             $id = $statement->fetch();
             $id = $id[0]+1;
 
-            $query = 'insert into personne value (:id,:nom, :prenom, :adresse, :login, :password, :statut,:specialite_id)';
+            $query = 'insert into personne value (:id,:nom, :prenom, :adresse, :login, :password, :statut,:specialite_id, :honoraire)';
             $statement = $database->prepare($query);
             $statement->execute([
                 'id' => $id,
@@ -119,7 +120,8 @@ class ModelPersonne{
                 'login' => $login,
                 'password' => $password,
                 'statut' => $statut,
-                'specialite_id' => $specialite_id
+                'specialite_id' => $specialite_id,
+                'honoraire' => $honoraire
             ]);
             return $id;
         } catch(PDOException $exception){
@@ -132,7 +134,7 @@ class ModelPersonne{
         try{
             $database = Model::getInstance();
 
-            $query = "SELECT p.id, p.nom, p.prenom, p.adresse, s.label FROM personne as p, specialite as s WHERE p.specialite_id = s.id AND p.statut=1 ORDER BY p.id";
+            $query = "SELECT p.id, p.nom, p.prenom, p.adresse, s.label, p.honoraire FROM personne as p, specialite as s WHERE p.specialite_id = s.id AND p.statut=1 ORDER BY p.id";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll();
@@ -223,7 +225,6 @@ class ModelPersonne{
     public static function getNomPraticien(){
         try {
             $database = Model::getInstance();
-
             $query = "select id, nom, prenom from personne where statut = :statut";
             $statement = $database->prepare($query);
             $statement->execute([
@@ -240,7 +241,6 @@ class ModelPersonne{
     public static function getDispoPraticienPatient($id) {
         try {
             $database = Model::getInstance();
-
             $query = "SELECT id, rdv_date FROM rendezvous WHERE patient_id=0 AND praticien_id = :id;";
             $statement = $database->prepare($query);
             $statement->execute([
@@ -253,6 +253,20 @@ class ModelPersonne{
             return NULL;
         }
     }
+
+    public static function getPraticienHonoraire(){
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT p.nom, p.prenom, s.label, p.honoraire FROM personne as p , specialite as s where s.id = p.specialite_id and p.statut = 1 ORDER BY p.honoraire";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll();
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
 }
 ?>
-<!--- fin model --->
+<!--- fin modelPersonne --->

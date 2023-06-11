@@ -103,7 +103,6 @@ class ModelRendezVous{
     public static function InsertRdv($idPrat,$date){
         try{
             $database = Model::getInstance();
-
             $query = "select max(id) from rendezvous";
             $statement = $database->query($query);
             $tuple = $statement->fetch();
@@ -128,7 +127,6 @@ class ModelRendezVous{
     public static function getRdv($id){
         try{
             $database = Model::getInstance();
-
             $query = "SELECT p.nom , p.prenom , r.rdv_date from personne as p, rendezvous as r where p.id = r.patient_id and r.praticien_id = :id and p.id != 0";
             $statement = $database->prepare($query);
             $statement->execute([
@@ -144,7 +142,6 @@ class ModelRendezVous{
     public static function getRdvPatient($id){
         try{
             $database = Model::getInstance();
-
             $query = "SELECT p.nom , p.prenom, r.rdv_date from personne as p, rendezvous as r where r.praticien_id = p.id and r.patient_id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
@@ -161,7 +158,6 @@ class ModelRendezVous{
     public static function addRdv($idRdv, $idPatient){
         try{
             $database = Model::getInstance();
-
             $query = "UPDATE rendezvous set patient_id = :idPatient where id = :id";
             $statement = $database->prepare($query);
             $statement->execute([

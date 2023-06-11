@@ -77,7 +77,6 @@ class ModelSpecialite{
         }else{
             try {
                 $database = Model::getInstance();
-
                 $query = "select max(id) from specialite";
                 $statement = $database->query($query);
                 $tuple = $statement->fetch();

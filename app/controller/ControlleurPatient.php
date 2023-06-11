@@ -39,4 +39,12 @@ class ControlleurPatient{
         require ($vue);
     }
 
+    public static function praticienHonoraire(){
+        $results = ModelPersonne::getPraticienHonoraire();
+        include 'config.php';
+        $vue = $root . 'app/view/viewPatient/viewHonoraire.php';
+        if (DEBUG) echo ("ControlleurPatient : viewHonoraire : vue = $vue<br>");
+        require ($vue);
+    }
+
 }

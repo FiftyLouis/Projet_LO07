@@ -4,8 +4,8 @@
 <div class="container bg-light rounded">
     <?php require ($root . '/app/view/fragment/fragmentMenu.php');?>
     <?php require ($root . '/app/view/fragment/fragmentJumbo.html'); ?>
-    <h2>Amélioration MVC</h2>
-    <p>Rendre disponible pour tout le monde la fonctionnalité mon Compte quel que soit le statut</p>
+    <h2>Innovation</h2>
+    <p>Ajout d'un attribut honoraire pour les praticiens, de choisir leur honoraire à l'inscription et pour les patients de voir les praticiens et leurs honoraires</p>
 </div>
 
 <?php require ($root . '/app/view/fragment/fragmentFooter.html'); ?>

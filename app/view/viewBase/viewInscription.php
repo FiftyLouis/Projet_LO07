@@ -32,6 +32,9 @@
                 <option value=5>ostéopathe</option>
                 <option value=6>kinésithérapeute</option>
             </select>
+
+            <label class='w-25' for="nom">Honoraire : </label><br>
+            <input type="number" name='honoraire' size='10'> <br/>
         </div>
         <br/>
         <button class="btn btn-primary" type="submit">S'inscrire</button>

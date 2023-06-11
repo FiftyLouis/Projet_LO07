@@ -79,7 +79,7 @@ class ControllerBase
         $password = $_POST['password'];
         $statut = intval($_POST['statut']);
         $specialite_id = intval($_POST['specialite_id']);
-
+        $honoraire = intval($_POST['honoraire']);
         $user = ModelPersonne::connexion($login,$password);
         if($user){
             //login déjà utilisé
@@ -88,7 +88,8 @@ class ControllerBase
             //erreur specialite id
             header('Location: router.php?action=Inscription');
         } else{
-            $id = ModelPersonne::InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id);
+            if($honoraire != 0 && $statut != 1) $honoraire = 0;
+            $id = ModelPersonne::InsertPersonne($nom,$prenom,$adresse,$login,$password,$statut,$specialite_id,$honoraire);
             if($id){
                 //inscription réussi
                 header('Location: router.php?action=Connexion');
@@ -104,6 +105,14 @@ class ControllerBase
         $vue = $root . '/app/view/viewAmelioration/viewMVC.php';
         if (DEBUG)
             echo("ControllerBase : viewMVC : vue = $vue");
+        require($vue);
+    }
+
+    public static function innovation(){
+        include 'config.php';
+        $vue = $root . '/app/view/viewAmelioration/viewInnovation.php';
+        if (DEBUG)
+            echo("ControllerBase : viewInnovation : vue = $vue");
         require($vue);
     }
 

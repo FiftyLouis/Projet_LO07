@@ -25,6 +25,7 @@ $args= $param;
 switch ($action) {
 
     case "Compte":
+    case "innovation":
     case "ameliorationMVC" :
     case "DoInscription" :
     case "Inscription" :
@@ -50,6 +51,7 @@ switch ($action) {
     case "RdvDispo" :ControlleurPraticien::$action($args);
         break;
 
+    case "praticienHonoraire":
     case "MesRdvPatient":
     case "patientChoisirPraticien":
     case "patientDispo":
